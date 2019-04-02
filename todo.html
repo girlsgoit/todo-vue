@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TODO List</title>
+  <!-- Milligram -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <!-- project css -->
+  <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+<div id="todo-app" class="container">
+  <h2>My TODO:</h2>
+
+  <div class="todo-list">
+    <div v-if="todoIsEmpty" class="todo-list__empty">Add some tasks ;)</div>
+
+    <div v-for="(item, index) in todoItems" class="todo-list__item" :class="{'done': item.isDone}">
+      <input :id="'todo' + index" type="checkbox" v-model="item.isDone">
+      <label :for="'todo' + index" class="label-inline">{{ item.value }}</label>
+      <button @click="removeTodo(index)" class="button button-clear">remove</button>
+    </div>
+
+    <div class="todo-list__add">
+      <form @submit.prevent="addTodo">
+        <input type="text" v-model="newItem" placeholder="Add task">
+        <button type="submit" class="button">Add</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<!-- Vue (development version) -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- project js -->
+<script src="todo.js"></script>
+</body>
+</html>

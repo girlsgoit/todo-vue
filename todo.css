@@ -1,0 +1,7 @@
+.todo-list__empty {
+    font-style: italic;
+}
+
+.todo-list__item.done > label {
+    text-decoration: line-through;
+}
